@@ -77,4 +77,13 @@ class StringCalculatorTests {
         """.trimIndent()
         add(numbers) shouldBe 6
     }
+
+    @Test
+    fun `should support multiple delimiters of any length`() {
+        val numbers = """
+            //[***][%^$]
+            1***2%^$3
+        """.trimIndent()
+        add(numbers) shouldBe 6
+    }
 }
