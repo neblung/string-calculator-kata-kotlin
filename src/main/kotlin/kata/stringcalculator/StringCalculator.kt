@@ -5,15 +5,20 @@ package kata.stringcalculator
  */
 fun add(string: String): Int {
     if (string.isEmpty()) return 0
+    return with(getNumbers(string)) {
+        requireContainsNoNegatives()
+        filter { it <= 1000 }.sum()
+    }
+}
+
+private fun getNumbers(string: String): List<Int> {
     val lines = string.lines()
-    val numbers = if (lines[0].startsWith("//")) {
+    return if (lines[0].startsWith("//")) {
         val delimiters = delimiters(lines[0].drop(2))
         numbersOfLines(delimiters, lines.drop(1))
     } else {
         numbersOfLines(listOf(","), lines)
     }
-    requireContainsNoNegatives(numbers)
-    return numbers.filter { it <= 1000 }.sum()
 }
 
 private fun delimiters(definition: String): List<String> {
@@ -31,7 +36,7 @@ private fun numbersOfLines(delimiters: List<String>, linesWithNumbers: List<Stri
 private fun numbersOfLine(delimiters: List<String>, line: String) =
     line.split(*delimiters.toTypedArray()).map { it.toInt() }
 
-private fun requireContainsNoNegatives(numbers: List<Int>) {
-    val negatives = numbers.filter { it < 0 }
-    if (negatives.isNotEmpty()) error("negatives not allowed: $negatives")
+private fun List<Int>.requireContainsNoNegatives() {
+    val negatives = filter { it < 0 }
+    require(negatives.isEmpty()) { "negatives not allowed: $negatives" }
 }
