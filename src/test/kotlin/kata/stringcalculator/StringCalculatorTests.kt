@@ -23,4 +23,13 @@ class StringCalculatorTests {
     fun `add -- many numbers separated by comma -- should return their sum`() {
         add("1,2,3,4") shouldBe 10
     }
+
+    @Test
+    fun `add -- numbers separated by comma or newline -- should return their sum`() {
+        val numbers = """
+            1
+            2,3
+        """.trimIndent()
+        add(numbers) shouldBe 6
+    }
 }
