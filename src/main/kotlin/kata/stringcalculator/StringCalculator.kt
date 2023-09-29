@@ -12,6 +12,8 @@ fun add(string: String): Int {
     } else {
         numbersOfLines(",", lines)
     }
+    val negatives = numbers.filter { it < 0 }
+    if (negatives.isNotEmpty()) error("negatives not allowed: $negatives")
     return numbers.sum()
 }
 
