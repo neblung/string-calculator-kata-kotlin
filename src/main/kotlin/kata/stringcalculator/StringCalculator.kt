@@ -12,8 +12,7 @@ fun add(string: String): Int {
     } else {
         numbersOfLines(",", lines)
     }
-    val negatives = numbers.filter { it < 0 }
-    if (negatives.isNotEmpty()) error("negatives not allowed: $negatives")
+    requireContainsNoNegatives(numbers)
     return numbers.sum()
 }
 
@@ -21,3 +20,8 @@ private fun numbersOfLines(delimiter: String, linesWithNumbers: List<String>): L
     linesWithNumbers.flatMap { numbersOfLine(delimiter, it) }
 
 private fun numbersOfLine(delimiter: String, line: String) = line.split(delimiter).map { it.toInt() }
+
+private fun requireContainsNoNegatives(numbers: List<Int>) {
+    val negatives = numbers.filter { it < 0 }
+    if (negatives.isNotEmpty()) error("negatives not allowed: $negatives")
+}
