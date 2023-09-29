@@ -59,4 +59,13 @@ class StringCalculatorTests {
         add("1000,17") shouldBe 1017
         add("1001,17") shouldBe 17
     }
+
+    @Test
+    fun `delimiters can be of any length when set in brackets`() {
+        val numbers = """
+            //[***]
+            1***2***3
+        """.trimIndent()
+        add(numbers) shouldBe 6
+    }
 }
