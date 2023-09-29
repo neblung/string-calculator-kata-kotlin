@@ -3,18 +3,19 @@ package kata.stringcalculator
 /**
  * See [here](https://osherove.com/tdd-kata-1)
  */
-fun add(numbers: String): Int {
-    if (numbers.isEmpty()) return 0
-    val lines = numbers.lines()
-    return if (lines[0].startsWith("//")) {
+fun add(string: String): Int {
+    if (string.isEmpty()) return 0
+    val lines = string.lines()
+    val numbers = if (lines[0].startsWith("//")) {
         val delimiter = lines[0].drop(2)
-        addLines(delimiter, lines.drop(1))
+        numbersOfLines(delimiter, lines.drop(1))
     } else {
-        addLines(",", lines)
+        numbersOfLines(",", lines)
     }
+    return numbers.sum()
 }
 
-private fun addLines(delimiter: String, linesWithNumbers: List<String>): Int =
-    linesWithNumbers.sumOf { addLine(delimiter, it) }
+private fun numbersOfLines(delimiter: String, linesWithNumbers: List<String>): List<Int> =
+    linesWithNumbers.flatMap { numbersOfLine(delimiter, it) }
 
-private fun addLine(delimiter: String, line: String) = line.split(delimiter).sumOf { it.toInt() }
+private fun numbersOfLine(delimiter: String, line: String) = line.split(delimiter).map { it.toInt() }

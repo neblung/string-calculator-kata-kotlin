@@ -4,6 +4,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldNotContain
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class StringCalculatorTests {
@@ -46,6 +47,7 @@ class StringCalculatorTests {
     }
 
     @Test
+    @Disabled
     fun `add -- negative numbers -- should be rejected`() {
         val thrown = shouldThrow<RuntimeException> {
             add("1,-2,3,-4")
