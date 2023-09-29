@@ -32,4 +32,13 @@ class StringCalculatorTests {
         """.trimIndent()
         add(numbers) shouldBe 6
     }
+
+    @Test
+    fun `add -- different delimiters should be supported`() {
+        val numbers = """
+            //;
+            1;2
+        """.trimIndent()
+        add(numbers) shouldBe 3
+    }
 }
