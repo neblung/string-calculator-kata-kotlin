@@ -13,7 +13,7 @@ fun add(string: String): Int {
         numbersOfLines(",", lines)
     }
     requireContainsNoNegatives(numbers)
-    return numbers.sum()
+    return numbers.filter { it <= 1000 }.sum()
 }
 
 private fun numbersOfLines(delimiter: String, linesWithNumbers: List<String>): List<Int> =
