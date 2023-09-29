@@ -1,7 +1,6 @@
 package kata.stringcalculator
 
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class StringCalculatorTests {
@@ -35,7 +34,6 @@ class StringCalculatorTests {
     }
 
     @Test
-    @Disabled
     fun `add -- different delimiters should be supported`() {
         val numbers = """
             //;
