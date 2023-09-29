@@ -7,6 +7,8 @@ fun add(numbers: String): Int {
     return if (numbers.isEmpty()) {
         0
     } else {
-        numbers.split(",").sumOf { it.toInt() }
+        numbers.lines().sumOf { addLine(it) }
     }
 }
+
+private fun addLine(line: String) = line.split(",").sumOf { it.toInt() }
