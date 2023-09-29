@@ -53,4 +53,10 @@ class StringCalculatorTests {
         listOf("negatives not allowed", "-2", "-4").forEach { thrown.message shouldContain it }
         listOf("1", "3").forEach { thrown.message shouldNotContain it }
     }
+
+    @Test
+    fun `add -- numbers bigger than 1000 should be ignored`() {
+        add("1000,17") shouldBe 1017
+        add("1001,17") shouldBe 17
+    }
 }
