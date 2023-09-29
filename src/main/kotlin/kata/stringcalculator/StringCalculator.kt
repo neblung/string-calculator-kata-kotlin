@@ -6,9 +6,7 @@ package kata.stringcalculator
 fun add(numbers: String): Int {
     return if (numbers.isEmpty()) {
         0
-    } else if (numbers.contains(",")) {
-        numbers.split(",").sumOf { it.toInt() }
     } else {
-        numbers.toInt()
+        numbers.split(",").sumOf { it.toInt() }
     }
 }
