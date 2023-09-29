@@ -18,7 +18,11 @@ fun add(string: String): Int {
 
 private fun delimiters(definition: String): List<String> {
     fun dropBrackets() = definition.drop(1).dropLast(1)
-    return listOf(if (definition.startsWith("[")) dropBrackets() else definition)
+    return if (definition.startsWith("[")) {
+        dropBrackets().split("][")
+    } else {
+        listOf(definition)
+    }
 }
 
 private fun numbersOfLines(delimiters: List<String>, linesWithNumbers: List<String>): List<Int> =

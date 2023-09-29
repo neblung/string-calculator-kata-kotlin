@@ -4,7 +4,6 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldNotContain
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class StringCalculatorTests {
@@ -71,7 +70,6 @@ class StringCalculatorTests {
     }
 
     @Test
-    @Disabled
     fun `should support multiple delimiters`() {
         val numbers = """
             //[*][%]
