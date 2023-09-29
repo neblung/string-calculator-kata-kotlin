@@ -1,6 +1,9 @@
 package kata.stringcalculator
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.string.shouldNotContain
 import org.junit.jupiter.api.Test
 
 class StringCalculatorTests {
@@ -40,5 +43,14 @@ class StringCalculatorTests {
             1;2
         """.trimIndent()
         add(numbers) shouldBe 3
+    }
+
+    @Test
+    fun `add -- negative numbers -- should be rejected`() {
+        val thrown = shouldThrow<RuntimeException> {
+            add("1,-2,3,-4")
+        }
+        listOf("negatives not allowed", "-2", "-4").forEach { thrown.message shouldContain it }
+        listOf("1", "3").forEach { thrown.message shouldNotContain it }
     }
 }
