@@ -18,4 +18,9 @@ class StringCalculatorTests {
     fun `add -- two numbers separated by comma -- should return their sum`() {
         add("17,4") shouldBe 21
     }
+
+    @Test
+    fun `add -- many numbers separated by comma -- should return their sum`() {
+        add("1,2,3,4") shouldBe 10
+    }
 }
