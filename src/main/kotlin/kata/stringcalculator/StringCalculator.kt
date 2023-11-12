@@ -1,7 +1,7 @@
 package kata.stringcalculator
 
-typealias Delimiters = List<String>
-typealias LinesWithNumbers = List<String>
+private typealias Delimiters = List<String>
+private typealias LinesWithNumbers = List<String>
 
 /**
  * See [here](https://osherove.com/tdd-kata-1)
